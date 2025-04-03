@@ -1,0 +1,46 @@
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+
+  border: 1px solid black;
+}
+
+.header-component {
+  text-align: center;
+
+  border: 1px solid black;
+}
+
+.header-component img {
+  border-radius: 50%;
+}
+
+.intro-container {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+
+  border: 1px solid black;
+}
+
+.container-left {
+  display: flex;
+  justify-content: start;
+
+  border: 1px solid black;
+}
+
+.container-right {
+  display: flex;
+  justify-content: end;
+
+  border: 1px solid black;
+}
+
+.container-component {
+  width: 50%;
+
+  border: 1px solid black;
+}
