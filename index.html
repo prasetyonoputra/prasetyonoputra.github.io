@@ -1,221 +1,137 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Prasetyono Putra</title>
-
+  <title>Prasetyono Putra | Software Developer</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <div class="header-container">
-    <div class="header-component">
-      <img src="./images/profile-image.jpg" alt="Image Prasetyono" width="250px" height="250px" />
+  <div class="container">
+    <header class="header">
+      <img src="./images/profile-image.jpg" alt="Prasetyono Putra">
       <h1>Prasetyono Putra</h1>
-      <h3>Software Developer</h3>
-    </div>
-    <div class="intro-container">
-      <p>
-        Software Engineer with 2+ years of experience in backend development, adept at crafting efficient solutions and
-        managing projects. Focused on enhancing operational efficiency and user experience, while staying updated with
-        the latest technological trends.
-      </p>
-    </div>
+      <h2>Software Developer</h2>
+      <p>Experienced software engineer specializing in backend development with expertise in Java, .NET, and web technologies. Focused on creating efficient solutions and delivering high-quality software.</p>
+    </header>
+
+    <section class="section">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>Programming Languages</h3>
+          <div class="skill-items">
+            <span class="skill-item">Java</span>
+            <span class="skill-item">C#</span>
+            <span class="skill-item">JavaScript</span>
+            <span class="skill-item">TypeScript</span>
+            <span class="skill-item">PHP</span>
+            <span class="skill-item">Python</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Frameworks</h3>
+          <div class="skill-items">
+            <span class="skill-item">Spring Boot</span>
+            <span class="skill-item">.NET Core</span>
+            <span class="skill-item">Laravel</span>
+            <span class="skill-item">React</span>
+            <span class="skill-item">React Native</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Databases</h3>
+          <div class="skill-items">
+            <span class="skill-item">MySQL</span>
+            <span class="skill-item">SQL Server</span>
+            <span class="skill-item">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Work Experience</h2>
+      
+      <div class="job">
+        <div class="job-header">
+          <h3 class="job-title">Java Developer</h3>
+          <span class="job-period">Oct 2023 - Present</span>
+        </div>
+        <h4 class="job-company">PT. Iforce Consulting Indonesia</h4>
+        <ul>
+          <li>Develop and maintain REST APIs using Java Spring Boot and .NET</li>
+          <li>Collaborate with front-end team to implement responsive UIs with React.js</li>
+          <li>Optimize SQL Server databases and queries for performance</li>
+          <li>Troubleshoot and debug across full stack applications</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <h3 class="job-title">Fullstack Developer</h3>
+          <span class="job-period">Apr 2022 - Sep 2023</span>
+        </div>
+        <h4 class="job-company">PT. Maximaa Innovative Engineering</h4>
+        <ul>
+          <li>Developed information systems and game simulations using C#, Unity, and Laravel</li>
+          <li>Implemented new features and enhanced existing functionality</li>
+          <li>Configured and maintained server infrastructure</li>
+          <li>Fixed bugs and improved application performance</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <h3 class="job-title">Structural Drafter</h3>
+          <span class="job-period">Sept 2020 - Apr 2022</span>
+        </div>
+        <h4 class="job-company">PT. Engineering Pilar Cakrawala</h4>
+        <ul>
+          <li>Prepare planning drawings for bridge and toll road projects</li>
+          <li>Create 2D and 3D designs using AutoCAD and SketchUp</li>
+          <li>Estimate bar bending schedules based on structural drawings</li>
+          <li>Perform basic structural analysis for concrete dam components</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Projects</h2>
+      
+      <div class="project">
+        <h3 class="project-title">AXA Afi E-Recruitment System</h3>
+        <span class="project-period">Jan 2024 - May 2024</span>
+        <ul>
+          <li>Full-stack development with React.js frontend and Spring Boot backend</li>
+          <li>Implemented database operations and optimized SQL Server performance</li>
+          <li>Designed and integrated RESTful APIs for seamless communication</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3 class="project-title">Trakindo Connected Salesman</h3>
+        <span class="project-period">Jun 2024 - Present</span>
+        <ul>
+          <li>Backend development using .NET Core</li>
+          <li>Database design and optimization with SQL Server</li>
+          <li>API development for mobile and web integration</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="mailto:your.email@example.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p>&copy; 2025 Prasetyono Putra. All rights reserved.</p>
+    </footer>
   </div>
-
-  <div class="container-left">
-    <div class="container-component">
-      <h1>Skills</h1>
-
-      <h2>Programming Languange</h2>
-      <ul>
-        <li>PHP</li>
-        <li>Javascript</li>
-        <li>Typescript</li>
-        <li>Java</li>
-        <li>C#</li>
-        <li>Python</li>
-        <li>C</li>
-        <li>VB.NET</li>
-        <li>Kotlin</li>
-      </ul>
-
-      <h2>Framework</h2>
-      <ul>
-        <li>Spring Boot</li>
-        <li>.NET Framework & Core</li>
-        <li>.NET WPF Desktop</li>
-        <li>Laravel</li>
-        <li>Unity</li>
-        <li>React Native</li>
-        <li>React JS</li>
-      </ul>
-
-      <h2>Database</h2>
-      <ul>
-        <li>MySQL</li>
-        <li>.SQL Server</li>
-        <li>PostgreSQL</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="container-right">
-    <div class="container-component">
-      <h1>Work Experience</h1>
-
-      <h2>PT. Engineering Pilar Cakrawala (September 2019 - April 2022)</h2>
-      <h3>Structural Drafter</h3>
-      <ul>
-        <li>Planning Infrastructure Projects: My ability to conceptualize solutions translates into creating meticulous
-          blueprints for bridge and toll road development, ensuring thorough project planning.</li>
-        <li>Detailed 2D and 3D Designs: I create visually rich 2D and 3D designs for bridges and toll roads, offering
-          precise visual guides for construction.</li>
-        <li>Efficient Barbending Schedule Estimations: Using project management skills, I accurately estimate barbending
-          schedules, contributing to on-time project execution.</li>
-        <li>Concrete Dam Structural Analysis: Applying problem-solving skills, I ensure the durability and safety of
-          concrete dam structures through rigorous analysis.</li>
-      </ul>
-
-      <h2>PT. Maximaa Innovative Engineering (April 2022 - September 2023 )</h2>
-      <h3>Fullstack Software Developer</h3>
-      <ul>
-        <li>Bug Fixing in Web Application: Leveraging my problem-solving expertise, I adeptly identify and rectify bugs
-          within web applications. My commitment to delivering quality solutions ensures that the applications are
-          robust and user-friendly.</li>
-        <li>Development of Information System and Game Simulation: Drawing on my proficiency in C#, Unity, Laravel,
-          JavaScript DOM, and NodeJS, I am proficient in creating information systems and game simulations. These
-          versatile skills enable me to craft engaging and interactive applications that meet user needs.</li>
-        <li>Feature Enhancement: Building upon my experience in designing software solutions, I am wellversed in
-          implementing new features into applications. My keen eye for user experience ensures that the added features
-          seamlessly integrate into the existing framework.</li>
-        <li>Server Configuration for Applications: With my background in server design, I confidently configure servers
-          to optimize application performance and security. My expertise ensures that the applications run smoothly and
-          efficiently.</li>
-      </ul>
-
-      <h2>PT. Iforce Consulting Indonesia (Oktober 2023 - Now)</h2>
-      <h3>Java Developer</h3>
-      <ul>
-        <li>Develop and maintain REST APIs using C# .NET and Java Spring Boot to ensure robust backend architecture.
-        </li>
-        <li>Collaborate with the front-end team, implementing dynamic and responsive user interfaces using React.js.
-        </li>
-        <li>Manage and optimize SQL Server databases, including designing schema, writing queries, and handling
-          performance tuning.</li>
-        <li>Troubleshoot, debug, and resolve issues across the stack to maintain high-performance applications.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="container-left">
-    <div class="container-component">
-      <h1>Project Experience</h1>
-
-      <h2>PT. Maximaa Innovative Engineering</h2>
-      <h3>EPPKM Simulasi (Sesko TNI AD) (April 2022 - September 2023)</h3>
-      <ul>
-        <li>Bug Resolution: I meticulously identified and resolved software bugs, ensuring the application's smooth and
-          error-free functionality. This involved thorough debugging and testing to maintain a high standard of software
-          quality. </li>
-        <li>Feature Enhancement: I played a key role in enhancing the application by adding new features that aligned
-          with user requirements. This required a deep understanding of user needs and efficient integration of these
-          features into the existing application architecture.</li>
-        <li>Server Development and Maintenance: I took charge of developing and maintaining the server infrastructure
-          that supported the application. This involved designing server components, optimizing server performance, and
-          ensuring robust server-side operations.</li>
-      </ul>
-
-      <h3>E-Library Dekstop (Sesko AL) (April 2022 - September 2023)</h3>
-      <ul>
-        <li>Migration to RFID Technology: I successfully executed the transition from the legacy reader/scanner system
-          to the advanced RFID technology. This involved updating the connection mechanisms and ensuring seamless
-          integration with the new hardware, contributing to a more efficient and modern library experience.</li>
-        <li>New Application and Feature Development: I spearheaded the development of a new application tailored to the
-          E-Library project's needs. Additionally, I designed and implemented new features that augmented the user
-          experience and met the evolving demands of the users. This required a deep understanding of both user
-          requirements and cutting-edge technological trends.</li>
-        <li>Bug Rectification: I meticulously identified and rectified several bugs within the application. Through
-          systematic debugging and comprehensive testing, I ensured that the application maintained its reliability and
-          met high-quality standards.</li>
-        <li>Configuration of New Backend API: As part of the project's expansion, I meticulously configured a new
-          backend API. This encompassed designing and setting up the API infrastructure to facilitate efficient
-          communication between various application components.</li>
-      </ul>
-
-      <h3>Spatial Dashboard Integated Module (Sesko AU) (April 2022 - September 2023)</h3>
-      <ul>
-        <li>Development of Application Features: Developed and enhanced application features using .NET MVC framework to
-          align with business requirements.</li>
-        <li>System Integration: Integrated new modules seamlessly into the existing system, ensuring compatibility and
-          user-friendly operations.</li>
-        <li>Performance Optimization: Conducted code reviews and implemented performance improvements for a more
-          efficient and reliable application.</li>
-      </ul>
-
-      <h2>PT. Iforce Consulting Indonesia</h2>
-      <h3>AXA Afione Web Portal (November 2023 - Mei 2024 )</h3>
-      <ul>
-        <li>Front-End Enhancement: Improved and expanded web portal functionality using React.js, ensuring an intuitive
-          and responsive user interface.</li>
-        <li>Component Development: Designed and implemented reusable React components to enhance consistency and reduce
-          development time.</li>
-        <li>Performance Tuning: Conducted front-end performance optimizations, including code splitting and lazy
-          loading, for faster load times and improved usability.</li>
-      </ul>
-
-      <h3>AXA Afi E-Recruitment (January 2024 - Mei 2024)</h3>
-      <ul>
-        <li>Full-Stack Development: Developed the application using React.js for the front-end and Spring Boot for the
-          back end to deliver a robust and scalable system.</li>
-        <li>Database Management: Implemented and optimized database operations using SQL Server, ensuring data integrity
-          and efficient query performance.</li>
-        <li>API Integration: Designed and integrated RESTful APIs to enable seamless communication between the front-end
-          and back-end.</li>
-        <li>Feature Development: Built and enhanced core application features to meet business requirements, ensuring
-          functionality and usability.</li>
-        <li>System Optimization: Conducted performance testing and tuning across the stack, enhancing both front-end
-          responsiveness and back-end processing speeds.</li>
-      </ul>
-
-      <h3>Trakindo Connected Salesman (Juni 2024 - November 2024)</h3>
-      <ul>
-        <li>Back-End Development: Developed and maintained the back-end application using .NET Core to deliver a robust
-          and scalable system.</li>
-        <li>Database Management: Designed, implemented, and optimized database operations using SQL Server, ensuring
-          data accuracy and high performance. </li>
-        <li>API Development: Created and deployed RESTful APIs to support seamless communication between the back-end
-          and front-end systems.</li>
-        <li>Feature Implementation: Built and enhanced back-end features to meet business requirements, focusing on
-          reliability and efficiency.</li>
-        <li>Performance Optimization: Conducted back-end performance tuning, ensuring fast response times and efficient
-          resource usage.</li>
-      </ul>
-
-      <h3>Trakindo Budgeting & Expense System (December 2024 - Now)</h3>
-      <ul>
-        <li>Full-Stack Development: Developed and maintained the application using .NET Framework, ensuring a seamless
-          integration between front-end and back-end.</li>
-        <li>Front-End Development: Built dynamic and responsive UI components using DevExtreme to enhance user
-          experience.</li>
-        <li>Back-End Development: Designed and optimized the back-end system with .NET Framework, focusing on
-          scalability and performance.</li>
-        <li>Database Management: Implemented and managed SQL Server databases, ensuring data integrity and efficient
-          query performance.</li>
-        <li>API Development: Developed RESTful APIs to facilitate smooth communication between frontend and back-end
-          systems.</li>
-        <li>Feature Enhancement: Continuously improved application features to align with business needs and enhance
-          functionality.</li>
-      </ul>
-    </div>
-  </div>
-
 </body>
-
 </html>
