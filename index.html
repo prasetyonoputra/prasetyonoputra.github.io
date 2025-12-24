@@ -1,137 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prasetyono Putra | Software Developer</title>
-  <link rel="stylesheet" href="./styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV | Prasetyono Putra</title>
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --card: #111111;
+      --text: #f5f5f5;
+      --muted: #9a9a9a;
+      --border: #1f1f1f;
+      --accent: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.04), transparent 40%),
+        radial-gradient(circle at 80% 0%, rgba(255,255,255,0.03), transparent 35%),
+        radial-gradient(circle at 60% 80%, rgba(255,255,255,0.025), transparent 40%),
+        linear-gradient(var(--bg), var(--bg));
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+
+    header {
+      padding: 120px 20px 100px;
+      text-align: center;
+      position: relative;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 55%),
+        radial-gradient(circle at bottom, rgba(255,255,255,0.04), transparent 60%),
+        linear-gradient(var(--bg), var(--bg));
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, #222, #000);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+    }
+
+    header h1 { font-size: 42px; margin-bottom: 10px; }
+
+    header p {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(11, 11, 11, 0.9);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 12px 0;
+      margin: 0;
+    }
+
+    nav a { font-weight: 600; color: var(--text); }
+
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      position: relative;
+    }
+
+    section:nth-of-type(even) {
+      background: rgba(255,255,255,0.015);
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      margin-bottom: 20px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text);
+      font-size: 13px;
+      margin: 6px 6px 0 0;
+      border: 1px solid var(--border);
+    }
+
+    .timeline {
+      border-left: 1px solid var(--border);
+      padding-left: 28px;
+    }
+
+    .timeline-item {
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      left: -34px;
+      top: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      border-top: 1px solid #1f2937;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      margin-top: 26px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); opacity: 0.85; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 32px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <img src="./images/profile-image.jpg" alt="Prasetyono Putra">
-      <h1>Prasetyono Putra</h1>
-      <h2>Software Developer</h2>
-      <p>Experienced software engineer specializing in backend development with expertise in Java, .NET, and web technologies. Focused on creating efficient solutions and delivering high-quality software.</p>
-    </header>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <section class="section">
-      <h2 class="section-title">Skills</h2>
-      <div class="skills-container">
-        <div class="skill-category">
-          <h3>Programming Languages</h3>
-          <div class="skill-items">
-            <span class="skill-item">Java</span>
-            <span class="skill-item">C#</span>
-            <span class="skill-item">JavaScript</span>
-            <span class="skill-item">TypeScript</span>
-            <span class="skill-item">PHP</span>
-            <span class="skill-item">Python</span>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3>Frameworks</h3>
-          <div class="skill-items">
-            <span class="skill-item">Spring Boot</span>
-            <span class="skill-item">.NET Core</span>
-            <span class="skill-item">Laravel</span>
-            <span class="skill-item">React</span>
-            <span class="skill-item">React Native</span>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3>Databases</h3>
-          <div class="skill-items">
-            <span class="skill-item">MySQL</span>
-            <span class="skill-item">SQL Server</span>
-            <span class="skill-item">PostgreSQL</span>
-          </div>
-        </div>
+  <header>
+    <div class="avatar">SD</div>
+    <h1>Software Developer</h1>
+    <p>
+      Software Developer with approximately 3.5 years of experience building
+      backend systems, frontend applications, and enterprise solutions.
+    </p>
+    <a class="btn" href="#contact">Contact Me</a>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Professional Summary</h3>
+        <p>
+          Software Developer with ~3.5 years of professional experience delivering
+          enterprise-grade systems, internal tools, and scalable web applications.
+          Strong background in backend development, API design, and relational
+          database optimization.
+        </p>
       </div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">Work Experience</h2>
-      
-      <div class="job">
-        <div class="job-header">
-          <h3 class="job-title">Java Developer</h3>
-          <span class="job-period">Oct 2023 - Present</span>
-        </div>
-        <h4 class="job-company">PT. Iforce Consulting Indonesia</h4>
+      <div class="card">
+        <h3>Core Strengths</h3>
         <ul>
-          <li>Develop and maintain REST APIs using Java Spring Boot and .NET</li>
-          <li>Collaborate with front-end team to implement responsive UIs with React.js</li>
-          <li>Optimize SQL Server databases and queries for performance</li>
-          <li>Troubleshoot and debug across full stack applications</li>
+          <li>Designing clean, maintainable backend architectures</li>
+          <li>Building RESTful APIs and service integrations</li>
+          <li>Optimizing SQL queries and database performance</li>
+          <li>Working in Linux-based production environments</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Backend Development</h3>
+        <p>Experienced in building scalable backend systems and APIs.</p>
+        <span class="badge">Laravel</span>
+        <span class="badge">Spring Boot</span>
+        <span class="badge">.NET</span>
+        <span class="badge">Node.js</span>
+        <span class="badge">Python</span>
+      </div>
+
+      <div class="card">
+        <h3>Frontend Development</h3>
+        <p>Creating clean, responsive, and user-friendly interfaces.</p>
+        <span class="badge">React</span>
+        <span class="badge">HTML</span>
+        <span class="badge">CSS</span>
+        <span class="badge">JavaScript</span>
+      </div>
+
+      <div class="card">
+        <h3>Databases & Data</h3>
+        <p>Designing schemas and optimizing relational databases.</p>
+        <span class="badge">SQL Server</span>
+        <span class="badge">MySQL</span>
+        <span class="badge">PostgreSQL</span>
+      </div>
+
+      <div class="card">
+        <h3>Tools, OS & Environment</h3>
+        <p>Daily development and deployment environment.</p>
+        <span class="badge">Linux Fedora</span>
+        <span class="badge">Linux Debian</span>
+        <span class="badge">Git</span>
+        <span class="badge">Unity</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Work Experience</h2>
+
+    <div class="grid">
+      <div class="card">
+        <div style="height:140px;border-radius:12px;background:linear-gradient(135deg,#1a1a1a,#000);border:1px solid var(--border);margin-bottom:16px"></div>
+        <h3>Enterprise Internal Systems</h3>
+        <p>
+          Designed and developed internal enterprise systems supporting core
+          business operations. Responsible for backend services, database
+          structure, and API integrations across departments.
+        </p>
+        <ul>
+          <li>Developed REST APIs using Laravel, Spring Boot, and .NET</li>
+          <li>Handled complex business logic and transaction flows</li>
+          <li>Optimized SQL Server and PostgreSQL queries</li>
         </ul>
       </div>
 
-      <div class="job">
-        <div class="job-header">
-          <h3 class="job-title">Fullstack Developer</h3>
-          <span class="job-period">Apr 2022 - Sep 2023</span>
-        </div>
-        <h4 class="job-company">PT. Maximaa Innovative Engineering</h4>
+      <div class="card">
+        <div style="height:140px;border-radius:12px;background:linear-gradient(135deg,#1a1a1a,#000);border:1px solid var(--border);margin-bottom:16px"></div>
+        <h3>Web & Fullstack Applications</h3>
+        <p>
+          Built fullstack web applications with modern frontend interfaces and
+          scalable backend architectures.
+        </p>
         <ul>
-          <li>Developed information systems and game simulations using C#, Unity, and Laravel</li>
-          <li>Implemented new features and enhanced existing functionality</li>
-          <li>Configured and maintained server infrastructure</li>
-          <li>Fixed bugs and improved application performance</li>
+          <li>Developed frontend features using React and vanilla JavaScript</li>
+          <li>Integrated backend APIs with frontend applications</li>
+          <li>Implemented authentication, authorization, and role-based access</li>
         </ul>
       </div>
+    </div>
 
-      <div class="job">
-        <div class="job-header">
-          <h3 class="job-title">Structural Drafter</h3>
-          <span class="job-period">Sept 2020 - Apr 2022</span>
-        </div>
-        <h4 class="job-company">PT. Engineering Pilar Cakrawala</h4>
-        <ul>
-          <li>Prepare planning drawings for bridge and toll road projects</li>
-          <li>Create 2D and 3D designs using AutoCAD and SketchUp</li>
-          <li>Estimate bar bending schedules based on structural drawings</li>
-          <li>Perform basic structural analysis for concrete dam components</li>
-        </ul>
+    <div class="card timeline" style="margin-top:40px">
+      <div class="timeline-item">
+        <h3>Software Developer</h3>
+        <p><strong>Duration:</strong> ~3.5 Years</p>
+        <p>
+          Worked closely with product owners and internal stakeholders to deliver
+          reliable software solutions. Involved in requirement analysis, system
+          design, development, testing, and deployment.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <h2 class="section-title">Projects</h2>
-      
-      <div class="project">
-        <h3 class="project-title">AXA Afi E-Recruitment System</h3>
-        <span class="project-period">Jan 2024 - May 2024</span>
-        <ul>
-          <li>Full-stack development with React.js frontend and Spring Boot backend</li>
-          <li>Implemented database operations and optimized SQL Server performance</li>
-          <li>Designed and integrated RESTful APIs for seamless communication</li>
-        </ul>
-      </div>
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Email: <a href="mailto:youremail@email.com">youremail@email.com</a></p>
+      <p>LinkedIn / GitHub: <em>add your profile links</em></p>
+    </div>
+  </section>
 
-      <div class="project">
-        <h3 class="project-title">Trakindo Connected Salesman</h3>
-        <span class="project-period">Jun 2024 - Present</span>
-        <ul>
-          <li>Backend development using .NET Core</li>
-          <li>Database design and optimization with SQL Server</li>
-          <li>API development for mobile and web integration</li>
-        </ul>
-      </div>
-    </section>
+  <footer>
+    <p>© 2025 - Software Developer CV</p>
+  </footer>
 
-    <footer class="footer">
-      <div class="social-links">
-        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="mailto:your.email@example.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      </div>
-      <p>&copy; 2025 Prasetyono Putra. All rights reserved.</p>
-    </footer>
-  </div>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
