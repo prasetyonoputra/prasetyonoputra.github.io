@@ -25,7 +25,8 @@
       />
       <h1>Prasetyono Putra</h1>
       <p>
-        Software Developer with approximately 3.5 years of experience building
+        Software Developer with approximately
+        <span id="experience-coding"></span> years of experience building
         backend systems, frontend applications, and enterprise solutions.
       </p>
       <a class="btn" href="#contact">Contact Me</a>
@@ -37,10 +38,11 @@
         <div class="card">
           <h3>Professional Summary</h3>
           <p>
-            Software Developer with ~3.5 years of professional experience
-            delivering enterprise-grade systems, internal tools, and scalable
-            web applications. Strong background in backend development, API
-            design, and relational database optimization.
+            Software Developer with ~<span id="experience-coding"></span> years
+            of professional experience delivering enterprise-grade systems,
+            internal tools, and scalable web applications. Strong background in
+            backend development, API design, and relational database
+            optimization.
           </p>
         </div>
         <div class="card">
@@ -200,13 +202,27 @@
           Email:
           <a href="mailto:prasetyonoptr@gmail.com">prasetyonoptr@gmail.com</a>
         </p>
-        <p>LinkedIn : <em><a href="https://www.linkedin.com/in/prasetyono-putra">linkedin.com/in/prasetyono-putra</a></em></p>
-        <p>GitHub: <em><a href="https://github.com/prasetyonoputra">github.com/prasetyonoputra</a></em></p>
+        <p>
+          LinkedIn :
+          <em
+            ><a href="https://www.linkedin.com/in/prasetyono-putra"
+              >linkedin.com/in/prasetyono-putra</a
+            ></em
+          >
+        </p>
+        <p>
+          GitHub:
+          <em
+            ><a href="https://github.com/prasetyonoputra"
+              >github.com/prasetyonoputra</a
+            ></em
+          >
+        </p>
       </div>
     </section>
 
     <footer>
-      <p>© 2026 - Prasetyono Putra CV</p>
+      <p>© <span class="year"></span> - Prasetyono Putra CV</p>
     </footer>
 
     <script>
@@ -217,6 +233,19 @@
             behavior: "smooth",
           });
         });
+      });
+
+      const year = new Date().getFullYear();
+      document.querySelector(".year").textContent = year;
+
+      const startCodingData = new Date("2022-04-01");
+      const now = new Date();
+      const diffTime = Math.abs(now - startCodingData);
+      const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.44));
+      const diffYears = Math.floor(diffMonths / 12);
+      const experienceString = `${diffYears},${diffMonths % 12}`;
+      document.querySelectorAll("#experience-coding").forEach((el) => {
+        el.textContent = experienceString;
       });
     </script>
   </body>
