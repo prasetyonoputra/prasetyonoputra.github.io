@@ -1,394 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CV | Prasetyono Putra</title>
-  <style>
-    :root {
-      --bg: #0b0b0b;
-      --card: #111111;
-      --text: #f5f5f5;
-      --muted: #9a9a9a;
-      --border: #1f1f1f;
-      --accent: #ffffff;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV | Prasetyono Putra</title>
 
-    * { box-sizing: border-box; }
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      line-height: 1.6;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.04), transparent 40%),
-        radial-gradient(circle at 80% 0%, rgba(255,255,255,0.03), transparent 35%),
-        radial-gradient(circle at 60% 80%, rgba(255,255,255,0.025), transparent 40%),
-        linear-gradient(var(--bg), var(--bg));
-    }
+    <header>
+      <img
+        class="avatar"
+        src="./assets/images/profile-image.jpg"
+        alt="Avatar"
+      />
+      <h1>Prasetyono Putra</h1>
+      <p>
+        Software Developer with approximately 3.5 years of experience building
+        backend systems, frontend applications, and enterprise solutions.
+      </p>
+      <a class="btn" href="#contact">Contact Me</a>
+    </header>
 
-    a { color: var(--accent); text-decoration: none; }
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Professional Summary</h3>
+          <p>
+            Software Developer with ~3.5 years of professional experience
+            delivering enterprise-grade systems, internal tools, and scalable
+            web applications. Strong background in backend development, API
+            design, and relational database optimization.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Core Strengths</h3>
+          <ul>
+            <li>Designing clean, maintainable backend architectures</li>
+            <li>Building RESTful APIs and service integrations</li>
+            <li>Optimizing SQL queries and database performance</li>
+            <li>Working in Linux-based production environments</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    header {
-      padding: 120px 20px 100px;
-      text-align: center;
-      position: relative;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 55%),
-        radial-gradient(circle at bottom, rgba(255,255,255,0.04), transparent 60%),
-        linear-gradient(var(--bg), var(--bg));
-      overflow: hidden;
-    }
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Backend Development</h3>
+          <p>Experienced in building scalable backend systems and APIs.</p>
+          <span class="badge">Laravel</span>
+          <span class="badge">Spring Boot</span>
+          <span class="badge">.NET</span>
+          <span class="badge">Node.js</span>
+          <span class="badge">Python</span>
+        </div>
 
-    header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-    }
+        <div class="card">
+          <h3>Frontend Development</h3>
+          <p>Creating clean, responsive, and user-friendly interfaces.</p>
+          <span class="badge">React</span>
+          <span class="badge">HTML</span>
+          <span class="badge">CSS</span>
+          <span class="badge">JavaScript</span>
+        </div>
 
-    .avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      margin: 0 auto 24px;
-      background: linear-gradient(135deg, #222, #000);
-      border: 2px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 2px;
-    }
+        <div class="card">
+          <h3>Databases & Data</h3>
+          <p>Designing schemas and optimizing relational databases.</p>
+          <span class="badge">SQL Server</span>
+          <span class="badge">MySQL</span>
+          <span class="badge">PostgreSQL</span>
+        </div>
 
-    header h1 { font-size: 42px; margin-bottom: 10px; }
+        <div class="card">
+          <h3>Tools, OS & Environment</h3>
+          <p>Daily development and deployment environment.</p>
+          <span class="badge">Linux Fedora</span>
+          <span class="badge">Linux Debian</span>
+          <span class="badge">Git</span>
+          <span class="badge">Unity</span>
+          <span class="badge">Microsoft Office</span>
+        </div>
+      </div>
+    </section>
 
-    header p {
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 720px;
-      margin: 0 auto;
-    }
+    <section id="experience">
+      <h2>Work Experience</h2>
 
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(11, 11, 11, 0.9);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--border);
-      z-index: 10;
-    }
+      <div class="grid">
+        <div class="card">
+          <div
+            style="
+              height: 140px;
+              border-radius: 12px;
+              background: linear-gradient(135deg, #1a1a1a, #000);
+              border: 1px solid var(--border);
+              margin-bottom: 16px;
+            "
+          ></div>
+          <h3>Enterprise Internal Systems</h3>
+          <p>
+            Designed and developed internal enterprise systems supporting core
+            business operations. Responsible for backend services, database
+            structure, and API integrations across departments.
+          </p>
+          <ul>
+            <li>Developed REST APIs using Laravel, Spring Boot, and .NET</li>
+            <li>Handled complex business logic and transaction flows</li>
+            <li>Optimized SQL Server and PostgreSQL queries</li>
+          </ul>
+        </div>
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      padding: 12px 0;
-      margin: 0;
-    }
+        <div class="card">
+          <div
+            style="
+              height: 140px;
+              border-radius: 12px;
+              background: linear-gradient(135deg, #1a1a1a, #000);
+              border: 1px solid var(--border);
+              margin-bottom: 16px;
+            "
+          ></div>
+          <h3>Web & Fullstack Applications</h3>
+          <p>
+            Built fullstack web applications with modern frontend interfaces and
+            scalable backend architectures.
+          </p>
+          <ul>
+            <li>
+              Developed frontend features using React and vanilla JavaScript
+            </li>
+            <li>Integrated backend APIs with frontend applications</li>
+            <li>
+              Implemented authentication, authorization, and role-based access
+            </li>
+          </ul>
+        </div>
+      </div>
 
-    nav a { font-weight: 600; color: var(--text); }
+      <div class="card timeline" style="margin-top: 40px">
+        <div class="timeline-item">
+          <h3>AutoCAD Structural Drafter - PT. Enginiring Pilar Cakrawala</h3>
+          <p><strong>Duration:</strong> September 2019 - April 2022</p>
+          <p>
+            Responsible for planning infrastructure projects by developing
+            detailed blueprints for bridges and toll roads, producing accurate
+            and visually comprehensive 2D and 3D designs as construction
+            references, estimating efficient barbending schedules to support
+            timely project execution, and conducting structural analysis of
+            concrete dams to ensure safety, strength, and long-term durability.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h3>System Developer - PT. Maximaa Innovative Engineering</h3>
+          <p><strong>Duration:</strong> April 2022 - October 2023</p>
+          <p>
+            Responsible for identifying and fixing bugs in web applications to
+            ensure system stability and user-friendly performance, developing
+            information systems and game simulations using C#, Unity, Laravel,
+            CodeIgniter, JavaScript DOM, and NodeJS, implementing new features
+            that integrate seamlessly with existing systems while maintaining a
+            strong focus on user experience, and configuring application servers
+            to optimize performance, reliability, and security.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h3>Software Developer - PT. Iforce Consulting Indonesia</h3>
+          <p><strong>Duration:</strong> October 2023 - Present</p>
+          <p>
+            Develop and maintain RESTful APIs using C# .NET and Java Spring Boot
+            to ensure a robust backend architecture, collaborate closely with
+            the front-end team to implement dynamic and responsive user
+            interfaces using React.js, manage and optimize SQL Server databases
+            including schema design, query development, and performance tuning,
+            and troubleshoot, debug, and resolve issues across the full
+            application stack to maintain high-performance and reliable systems.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 20px;
-      position: relative;
-    }
-
-    section:nth-of-type(even) {
-      background: rgba(255,255,255,0.015);
-    }
-
-    section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-      background-size: 80px 80px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    section > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    section > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    h2 {
-      font-size: 28px;
-      margin-bottom: 40px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      position: relative;
-      padding-left: 16px;
-    }
-
-    h2::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 4px;
-      height: 100%;
-      background: var(--accent);
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 26px;
-      margin-bottom: 20px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: transparent;
-      color: var(--text);
-      font-size: 13px;
-      margin: 6px 6px 0 0;
-      border: 1px solid var(--border);
-    }
-
-    .timeline {
-      border-left: 1px solid var(--border);
-      padding-left: 28px;
-    }
-
-    .timeline-item {
-      margin-bottom: 30px;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-      position: absolute;
-      left: -34px;
-      top: 8px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--muted);
-      border-top: 1px solid #1f2937;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 12px;
-      background: var(--accent);
-      color: #000;
-      font-weight: 700;
-      margin-top: 26px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-
-    .btn:hover { transform: translateY(-2px); opacity: 0.85; }
-
-    @media (max-width: 600px) {
-      header h1 { font-size: 32px; }
-    }
-  </style>
-</head>
-<body>
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <header>
-    <div class="avatar">SD</div>
-    <h1>Software Developer</h1>
-    <p>
-      Software Developer with approximately 3.5 years of experience building
-      backend systems, frontend applications, and enterprise solutions.
-    </p>
-    <a class="btn" href="#contact">Contact Me</a>
-  </header>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="grid">
+    <section id="contact">
+      <h2>Contact</h2>
       <div class="card">
-        <h3>Professional Summary</h3>
         <p>
-          Software Developer with ~3.5 years of professional experience delivering
-          enterprise-grade systems, internal tools, and scalable web applications.
-          Strong background in backend development, API design, and relational
-          database optimization.
+          Email:
+          <a href="mailto:prasetyonoptr@gmail.com">prasetyonoptr@gmail.com</a>
         </p>
+        <p>LinkedIn : <em><a href="https://www.linkedin.com/in/prasetyono-putra">linkedin.com/in/prasetyono-putra</a></em></p>
+        <p>GitHub: <em><a href="https://github.com/prasetyonoputra">github.com/prasetyonoputra</a></em></p>
       </div>
-      <div class="card">
-        <h3>Core Strengths</h3>
-        <ul>
-          <li>Designing clean, maintainable backend architectures</li>
-          <li>Building RESTful APIs and service integrations</li>
-          <li>Optimizing SQL queries and database performance</li>
-          <li>Working in Linux-based production environments</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Backend Development</h3>
-        <p>Experienced in building scalable backend systems and APIs.</p>
-        <span class="badge">Laravel</span>
-        <span class="badge">Spring Boot</span>
-        <span class="badge">.NET</span>
-        <span class="badge">Node.js</span>
-        <span class="badge">Python</span>
-      </div>
+    <footer>
+      <p>© 2026 - Prasetyono Putra CV</p>
+    </footer>
 
-      <div class="card">
-        <h3>Frontend Development</h3>
-        <p>Creating clean, responsive, and user-friendly interfaces.</p>
-        <span class="badge">React</span>
-        <span class="badge">HTML</span>
-        <span class="badge">CSS</span>
-        <span class="badge">JavaScript</span>
-      </div>
-
-      <div class="card">
-        <h3>Databases & Data</h3>
-        <p>Designing schemas and optimizing relational databases.</p>
-        <span class="badge">SQL Server</span>
-        <span class="badge">MySQL</span>
-        <span class="badge">PostgreSQL</span>
-      </div>
-
-      <div class="card">
-        <h3>Tools, OS & Environment</h3>
-        <p>Daily development and deployment environment.</p>
-        <span class="badge">Linux Fedora</span>
-        <span class="badge">Linux Debian</span>
-        <span class="badge">Git</span>
-        <span class="badge">Unity</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <h2>Work Experience</h2>
-
-    <div class="grid">
-      <div class="card">
-        <div style="height:140px;border-radius:12px;background:linear-gradient(135deg,#1a1a1a,#000);border:1px solid var(--border);margin-bottom:16px"></div>
-        <h3>Enterprise Internal Systems</h3>
-        <p>
-          Designed and developed internal enterprise systems supporting core
-          business operations. Responsible for backend services, database
-          structure, and API integrations across departments.
-        </p>
-        <ul>
-          <li>Developed REST APIs using Laravel, Spring Boot, and .NET</li>
-          <li>Handled complex business logic and transaction flows</li>
-          <li>Optimized SQL Server and PostgreSQL queries</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div style="height:140px;border-radius:12px;background:linear-gradient(135deg,#1a1a1a,#000);border:1px solid var(--border);margin-bottom:16px"></div>
-        <h3>Web & Fullstack Applications</h3>
-        <p>
-          Built fullstack web applications with modern frontend interfaces and
-          scalable backend architectures.
-        </p>
-        <ul>
-          <li>Developed frontend features using React and vanilla JavaScript</li>
-          <li>Integrated backend APIs with frontend applications</li>
-          <li>Implemented authentication, authorization, and role-based access</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card timeline" style="margin-top:40px">
-      <div class="timeline-item">
-        <h3>Software Developer</h3>
-        <p><strong>Duration:</strong> ~3.5 Years</p>
-        <p>
-          Worked closely with product owners and internal stakeholders to deliver
-          reliable software solutions. Involved in requirement analysis, system
-          design, development, testing, and deployment.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="card">
-      <p>Email: <a href="mailto:youremail@email.com">youremail@email.com</a></p>
-      <p>LinkedIn / GitHub: <em>add your profile links</em></p>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 - Software Developer CV</p>
-  </footer>
-
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
         });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
