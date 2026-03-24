@@ -289,7 +289,7 @@ h2::before {
   background: var(--accent);
   border-radius: 50%;
   position: absolute;
-  left: -34px;
+  left: -18px;
   top: 8px;
 }
 
