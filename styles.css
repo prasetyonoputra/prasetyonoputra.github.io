@@ -22,14 +22,18 @@
   --status-green: #10b981;
   --status-green-glow: rgba(16, 185, 129, 0.3);
 
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
   --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ==========================================================================
    CSS Reset & Base Rules
    ========================================================================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -108,20 +112,6 @@ button {
   letter-spacing: -0.3px;
 }
 
-.brand-initials {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: var(--accent-gold-light);
-  border: 1px solid var(--accent-gold-border);
-  color: var(--accent-gold);
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
 .nav-menu {
   display: flex;
   align-items: center;
@@ -144,7 +134,7 @@ button {
 }
 
 .nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -2px;
@@ -246,22 +236,20 @@ button {
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.9); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
-}
-
-.hero-eyebrow {
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--accent-gold);
-  margin-bottom: 0.5rem;
 }
 
 .hero-name {
@@ -503,7 +491,7 @@ a.quick-chip:hover {
 }
 
 .feature-list li::before {
-  content: '▸';
+  content: "▸";
   position: absolute;
   left: 0;
   color: var(--accent-gold);
@@ -619,7 +607,7 @@ a.quick-chip:hover {
 }
 
 .timeline-bullets li::before {
-  content: '▸';
+  content: "▸";
   position: absolute;
   left: 0;
   color: var(--accent-gold);
@@ -858,7 +846,9 @@ a.quick-chip:hover {
   font-size: 1.1rem;
   padding-left: 0.5rem;
   flex-shrink: 0;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .contact-card:hover .contact-arrow {
