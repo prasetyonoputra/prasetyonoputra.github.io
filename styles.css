@@ -1192,3 +1192,242 @@ a.quick-chip:hover svg {
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   Interactive Layer — overlays & micro-interactions (no layout changes)
+   ========================================================================== */
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.35), #ffffff);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: 2000;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Custom cursor (desktop only) */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 3000;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #ffffff;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1px solid #ffffff;
+  transition: opacity 0.3s ease, width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.35s ease;
+}
+
+body.cursor-ready .cursor-dot,
+body.cursor-ready .cursor-ring {
+  opacity: 1;
+}
+
+body.cursor-hover .cursor-ring {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  background-color: #ffffff;
+}
+
+body.cursor-down .cursor-ring {
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+}
+
+/* Hero constellation canvas */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.hero-canvas.ready {
+  opacity: 1;
+}
+
+/* Hero name — letter by letter reveal */
+.hero-name .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.6em) rotateX(-70deg);
+  filter: blur(6px);
+  animation: charIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--ci) * 35ms + 0.15s);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.hero-name .char.space {
+  width: 0.28em;
+}
+
+.hero-name .char:hover {
+  transform: translateY(-6px);
+  color: #a1a1aa;
+}
+
+@keyframes charIn {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+/* Typing caret on hero title */
+.type-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 4px;
+  vertical-align: -0.15em;
+  background: #ffffff;
+  animation: caretBlink 1s steps(1) infinite;
+}
+
+@keyframes caretBlink {
+  50% { opacity: 0; }
+}
+
+/* Avatar 3D tilt */
+.hero-avatar-box {
+  perspective: 800px;
+}
+
+.hero-avatar.is-tilting {
+  transition: transform 0.12s ease-out, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Grayscale-to-sharp avatar interaction */
+.hero-avatar {
+  filter: grayscale(100%) contrast(1.05);
+}
+
+.hero-avatar:hover {
+  filter: grayscale(0%);
+}
+
+/* Badge pop stagger when parent is revealed */
+.scroll-reveal:not(.is-visible) .badge {
+  opacity: 0;
+}
+
+.scroll-reveal.is-visible .badge {
+  animation: badgePop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  animation-delay: calc(var(--bi, 0) * 45ms + 0.25s);
+}
+
+@keyframes badgePop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.85);
+  }
+}
+
+/* Click ripple */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(0);
+  animation: rippleOut 0.7s ease-out forwards;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.btn-primary .ripple {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+@keyframes rippleOut {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Magnetic buttons */
+.btn {
+  will-change: transform;
+}
+
+.btn.is-magnetic {
+  transition: transform 0.15s ease-out, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Section title underline draw */
+.section-title {
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, #ffffff, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.is-visible .section-title::after {
+  transform: scaleX(1);
+}
+
+/* Disable heavy effects for touch & reduced motion */
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-name .char {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+  }
+  .hero-canvas,
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}

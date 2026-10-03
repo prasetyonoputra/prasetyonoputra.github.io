@@ -752,7 +752,10 @@
 
           <div class="contact-grid">
             <!-- Email -->
-            <a href="mailto:prasetyonoptr@gmail.com" class="contact-card scroll-reveal delay-1">
+            <a
+              href="mailto:prasetyonoptr@gmail.com"
+              class="contact-card scroll-reveal delay-1"
+            >
               <div class="contact-icon-wrapper">
                 <svg
                   width="24"
@@ -976,7 +979,7 @@
         {
           threshold: 0.12,
           rootMargin: "0px 0px -40px 0px",
-        }
+        },
       );
 
       document.querySelectorAll(".scroll-reveal").forEach((el) => {
@@ -985,7 +988,7 @@
 
       // Interactive Monochrome Spotlight Hover on Cards
       const interactiveCards = document.querySelectorAll(
-        ".card, .timeline-card, .skill-category-card, .contact-card"
+        ".card, .timeline-card, .skill-category-card, .contact-card",
       );
       interactiveCards.forEach((card) => {
         card.addEventListener("mousemove", (e) => {
@@ -996,6 +999,293 @@
           card.style.setProperty("--mouse-y", `${y}px`);
         });
       });
+
+      /* ==================================================================
+         Interactive Layer
+         ================================================================== */
+      (function () {
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        const finePointer = window.matchMedia(
+          "(hover: hover) and (pointer: fine)",
+        ).matches;
+
+        // 1. Scroll progress bar
+        const progress = document.createElement("div");
+        progress.className = "scroll-progress";
+        document.body.appendChild(progress);
+        const updateProgress = () => {
+          const max =
+            document.documentElement.scrollHeight - window.innerHeight;
+          progress.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+        };
+        window.addEventListener("scroll", updateProgress, { passive: true });
+        updateProgress();
+
+        // 2. Hero name letter-by-letter reveal
+        const heroName = document.querySelector(".hero-name");
+        if (heroName && !reduceMotion) {
+          const text = heroName.textContent.trim();
+          heroName.setAttribute("aria-label", text);
+          heroName.innerHTML = "";
+          [...text].forEach((ch, i) => {
+            const span = document.createElement("span");
+            span.className = "char" + (ch === " " ? " space" : "");
+            span.textContent = ch === " " ? "\u00A0" : ch;
+            span.style.setProperty("--ci", i);
+            span.setAttribute("aria-hidden", "true");
+            heroName.appendChild(span);
+          });
+        }
+
+        // 3. Typewriter on hero title
+        const heroTitle = document.querySelector(".hero-title");
+        if (heroTitle && !reduceMotion) {
+          const full = heroTitle.textContent.trim();
+          heroTitle.setAttribute("aria-label", full);
+          heroTitle.textContent = "";
+          const typed = document.createElement("span");
+          const caret = document.createElement("span");
+          caret.className = "type-caret";
+          heroTitle.append(typed, caret);
+          let i = 0;
+          setTimeout(function type() {
+            typed.textContent = full.slice(0, ++i);
+            if (i < full.length) setTimeout(type, 28 + Math.random() * 40);
+          }, 900);
+        }
+
+        // 4. Badge stagger index
+        document.querySelectorAll(".badges-wrap").forEach((wrap) => {
+          wrap
+            .querySelectorAll(".badge")
+            .forEach((b, i) => b.style.setProperty("--bi", i));
+        });
+
+        // 5. Count-up for numeric metrics
+        document.querySelectorAll(".metric-num").forEach((el) => {
+          if (!/^\d+$/.test(el.textContent.trim()) || reduceMotion) return;
+          const target = parseInt(el.textContent, 10);
+          el.textContent = "0";
+          setTimeout(() => {
+            const start = performance.now();
+            const step = (now) => {
+              const p = Math.min((now - start) / 1400, 1);
+              el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+              if (p < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          }, 900);
+        });
+
+        // 6. Text scramble on section tags when revealed
+        const glyphs = "!<>-_\\/[]{}=+*^?#01";
+        const scramble = (el) => {
+          const final = el.dataset.text || el.textContent;
+          el.dataset.text = final;
+          let frame = 0;
+          const total = 22;
+          const tick = () => {
+            el.textContent = [...final]
+              .map((c, i) =>
+                c === " " || frame / total > i / final.length
+                  ? c
+                  : glyphs[Math.floor(Math.random() * glyphs.length)],
+              )
+              .join("");
+            if (++frame <= total) requestAnimationFrame(tick);
+            else el.textContent = final;
+          };
+          tick();
+        };
+        if (!reduceMotion) {
+          const tagObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  scramble(e.target);
+                  tagObserver.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.6 },
+          );
+          document
+            .querySelectorAll(".section-tag")
+            .forEach((t) => tagObserver.observe(t));
+        }
+
+        // 7. Click ripple on buttons & cards
+        document
+          .querySelectorAll(".btn, .contact-card, .quick-chip")
+          .forEach((el) => {
+            if (getComputedStyle(el).position === "static")
+              el.style.position = "relative";
+            el.style.overflow = "hidden";
+            el.addEventListener("pointerdown", (e) => {
+              const rect = el.getBoundingClientRect();
+              const size = Math.max(rect.width, rect.height) * 2;
+              const r = document.createElement("span");
+              r.className = "ripple";
+              r.style.width = r.style.height = `${size}px`;
+              r.style.left = `${e.clientX - rect.left - size / 2}px`;
+              r.style.top = `${e.clientY - rect.top - size / 2}px`;
+              el.appendChild(r);
+              setTimeout(() => r.remove(), 700);
+            });
+          });
+
+        if (reduceMotion || !finePointer) return;
+
+        // 9. Subtle 3D tilt on cards
+        document
+          .querySelectorAll(".card, .timeline-card, .skill-category-card")
+          .forEach((card) => {
+            card.addEventListener("mouseenter", () => {
+              card.style.transition =
+                "transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease";
+              card.style.transitionDelay = "0s";
+            });
+            card.addEventListener("mousemove", (e) => {
+              const rect = card.getBoundingClientRect();
+              const px = (e.clientX - rect.left) / rect.width - 0.5;
+              const py = (e.clientY - rect.top) / rect.height - 0.5;
+              card.style.transform = `perspective(1000px) rotateX(${-py * 4}deg) rotateY(${px * 4}deg) translateY(-3px)`;
+            });
+            card.addEventListener("mouseleave", () => {
+              card.style.transition =
+                "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease";
+              card.style.transform = "";
+            });
+          });
+
+        // 10. Avatar 3D tilt
+        const avatar = document.querySelector(".hero-avatar");
+        if (avatar) {
+          avatar.addEventListener("mousemove", (e) => {
+            const rect = avatar.getBoundingClientRect();
+            const px = (e.clientX - rect.left) / rect.width - 0.5;
+            const py = (e.clientY - rect.top) / rect.height - 0.5;
+            avatar.classList.add("is-tilting");
+            avatar.style.transform = `rotateX(${-py * 14}deg) rotateY(${px * 14}deg) scale(1.04)`;
+          });
+          avatar.addEventListener("mouseleave", () => {
+            avatar.classList.remove("is-tilting");
+            avatar.style.transform = "";
+          });
+        }
+
+        // 11. Magnetic buttons
+        document.querySelectorAll(".btn").forEach((btn) => {
+          btn.addEventListener("mousemove", (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.classList.add("is-magnetic");
+            btn.style.transform = `translate(${x * 0.22}px, ${y * 0.3 - 2}px)`;
+          });
+          btn.addEventListener("mouseleave", () => {
+            btn.classList.remove("is-magnetic");
+            btn.style.transform = "";
+          });
+        });
+
+        // 12. Hero constellation canvas (monochrome particles reacting to cursor)
+        const hero = document.querySelector(".hero-section");
+        if (hero) {
+          const canvas = document.createElement("canvas");
+          canvas.className = "hero-canvas";
+          hero.prepend(canvas);
+          const ctx = canvas.getContext("2d");
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          let w,
+            h,
+            particles = [],
+            visible = true;
+          const mouse = { x: -9999, y: -9999 };
+
+          const resize = () => {
+            w = hero.offsetWidth;
+            h = hero.offsetHeight;
+            canvas.width = w * dpr;
+            canvas.height = h * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            const count = Math.min(70, Math.floor((w * h) / 16000));
+            particles = Array.from({ length: count }, () => ({
+              x: Math.random() * w,
+              y: Math.random() * h,
+              vx: (Math.random() - 0.5) * 0.25,
+              vy: (Math.random() - 0.5) * 0.25,
+              r: Math.random() * 1.2 + 0.4,
+            }));
+          };
+
+          hero.addEventListener("mousemove", (e) => {
+            const rect = hero.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+          });
+          hero.addEventListener("mouseleave", () => {
+            mouse.x = mouse.y = -9999;
+          });
+
+          new IntersectionObserver(
+            ([e]) => (visible = e.isIntersecting),
+          ).observe(hero);
+
+          const draw = () => {
+            requestAnimationFrame(draw);
+            if (!visible) return;
+            ctx.clearRect(0, 0, w, h);
+            for (let i = 0; i < particles.length; i++) {
+              const p = particles[i];
+              const dxm = p.x - mouse.x;
+              const dym = p.y - mouse.y;
+              const dm = Math.hypot(dxm, dym);
+              if (dm < 120 && dm > 0) {
+                p.x += (dxm / dm) * 0.8;
+                p.y += (dym / dm) * 0.8;
+              }
+              p.x += p.vx;
+              p.y += p.vy;
+              if (p.x < 0 || p.x > w) p.vx *= -1;
+              if (p.y < 0 || p.y > h) p.vy *= -1;
+
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+              ctx.fillStyle = "rgba(255,255,255,0.45)";
+              ctx.fill();
+
+              for (let j = i + 1; j < particles.length; j++) {
+                const q = particles[j];
+                const d = Math.hypot(p.x - q.x, p.y - q.y);
+                if (d < 110) {
+                  ctx.strokeStyle = `rgba(255,255,255,${0.12 * (1 - d / 110)})`;
+                  ctx.lineWidth = 0.6;
+                  ctx.beginPath();
+                  ctx.moveTo(p.x, p.y);
+                  ctx.lineTo(q.x, q.y);
+                  ctx.stroke();
+                }
+              }
+              if (dm < 160) {
+                ctx.strokeStyle = `rgba(255,255,255,${0.25 * (1 - dm / 160)})`;
+                ctx.lineWidth = 0.7;
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
+              }
+            }
+          };
+
+          resize();
+          window.addEventListener("resize", resize);
+          requestAnimationFrame(() => canvas.classList.add("ready"));
+          draw();
+        }
+      })();
     </script>
   </body>
 </html>
